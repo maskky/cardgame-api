@@ -1,13 +1,14 @@
-from jose import JWTError, jwt
+import os
+
+from jose import jwt
 from datetime import datetime, timedelta
 from fastapi import Depends, HTTPException
 
 from app.model.token.model import TokenData
+from app.util.config import SECRET_KEY, ACCESS_TOKEN_EXPIRE_MINUTES
 from app.util.error import ErrorHandler
 
-SECRET_KEY = "09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7"
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
 TOKEN_TYPE = 'Bearer'
 TOKEN_TYPE_INDEX = 0
 TOKEN_INDEX = 1

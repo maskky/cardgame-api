@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "cardgame-api"
+version = "1.0.0"
+description = "Backend logic implementation with FastAPI"
+authors = ["vasanchai.pr@gmail.com"]
+license = "MIT"
+
+
+[[tool.poetry.source]]
+name = 'tsinghua'
+url = 'https://pypi.tuna.tsinghua.edu.cn/simple'
+
+[tool.poetry.dependencies]
+python = "^3.8.5"
+uvicorn = "^0.14.0"
+fastapi = "^0.65.2"
+pydantic = "^1.8.2"
+passlib = "1.7.4"
+jwt = "^1.2.0"
+bcrypt = "^3.2.0"
+motor = "^2.4.0"
+pymongo = "^3.11.4"
+python-jose = {extras = ["cryptography"], version = "^3.3.0"}
+python-dotenv = "^0.17.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "*"
+

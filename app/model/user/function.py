@@ -9,14 +9,14 @@ async def check_duplicate_username(conn: AsyncIOMotorClient, username: str):
     "username": username
   })
 
-  return True if user is None else False
+  return False if user is None else True
 
 async def create_user(conn: AsyncIOMotorClient, username: str, password: str):
   created_user = await conn[DATABASE][COLLECTION].insert_one({
     "username": username,
     "password": password,
-    "create_at": get_current_datetime(),
-    "update_at": get_current_datetime()
+    "created_at": get_current_datetime(),
+    "updated_at": get_current_datetime()
   })
 
   user = await conn[DATABASE][COLLECTION].find_one({

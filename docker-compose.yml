@@ -1,0 +1,29 @@
+version: '3'
+services:
+  cardgame-mongo:
+    restart: always
+    image: mongo:3.6
+    container_name: cardgame-mongo
+    ports:
+      - 27017:27017
+    networks:
+      - cardgame-network
+  cardgame:
+    restart: always
+    image: cardgame:0.0.1
+    container_name: cardgame
+    environment:
+      - MONGODB_URL=mongodb://cardgame-mongo:27017 
+      - TOTAL_CARD=12
+      - SECRET_KEY=09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7
+      - ACCESS_TOKEN_EXPIRE_MINUTES=30
+    ports:
+      - 8000:8000
+    depends_on:
+      - cardgame-mongo
+    networks:
+      - cardgame-network
+
+networks:
+  cardgame-network:
+    driver: "bridge"

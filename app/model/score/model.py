@@ -4,17 +4,11 @@ from datetime import datetime
 
 from ..custom_schema import PydanticObjectId
 
-class User(BaseModel):
+class Score(BaseModel):
   username: str
-  password: str
-  created_at: Optional[datetime] = None
-  updated_at: Optional[datetime] = None
+  score: int
 
-class UserInRequest(BaseModel):
-  username: str
-  password: str
-
-class UserInResponse(BaseModel):
+class ScoreInResponse(BaseModel):
   id: PydanticObjectId = Field(..., alias='_id')
   username: str
   created_at: datetime
