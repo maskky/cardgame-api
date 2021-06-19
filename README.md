@@ -1,5 +1,6 @@
 # cardgame-api
 
+```
 ./cardgame-service/
 │
 ├── app/
@@ -44,4 +45,5 @@
 ├── index.py
 ├── pyproject.toml
 └── .README.md
+```
 
