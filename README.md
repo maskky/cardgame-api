@@ -27,9 +27,10 @@
 |   |   ├── token/
 |   |   |   ├── function.py
 |   |   |   └── model.py
-|   |   └── user/
-|   |       ├── function.py
-|   |       └── model.py
+|   |   ├── user/
+|   |   |   ├── function.py
+|   |   |   └── model.py
+|   |   └── custom_schema.py
 |   |
 │   ├── util/
 |   |   ├── config.py
