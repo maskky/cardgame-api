@@ -74,7 +74,7 @@
 
 Install denpendencies (If not use **Docker**)
 ```sh
-pip install poetry && poetry install
+pip install poetry && poetry install && poetry env list
 ```
 
 poetry will return name and path of virtual env, then **activate** that virtual env
