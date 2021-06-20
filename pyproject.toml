@@ -5,7 +5,6 @@ description = "Backend logic implementation with FastAPI"
 authors = ["vasanchai.pr@gmail.com"]
 license = "MIT"
 
-
 [[tool.poetry.source]]
 name = 'tsinghua'
 url = 'https://pypi.tuna.tsinghua.edu.cn/simple'

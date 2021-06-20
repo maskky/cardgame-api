@@ -14,7 +14,7 @@ from app.util.error import ErrorHandler
 
 router = APIRouter()
 
-@router.get("/new_game", response_model = GameInResponse, tags = ["Game"], status_code = HTTP_200_OK)
+@router.post("/new_game", response_model = GameInResponse, tags = ["Game"], status_code = HTTP_200_OK)
 async def new_game(authorization: str = Header(None), db: AsyncIOMotorClient = Depends(get_database)):
   decoded_token = await decode_access_token(authorization)
   game = await create_or_update_game(db, decoded_token.username)
@@ -44,7 +44,7 @@ async def continue_game(authorization: str = Header(None), db: AsyncIOMotorClien
   return response_model(GameInResponse.parse_obj(game))
 
 
-@router.get("/flip_card/{card_id}", response_model = GameInResponse, tags = ["Game"], status_code = HTTP_200_OK)
+@router.post("/flip_card/{card_id}", response_model = GameInResponse, tags = ["Game"], status_code = HTTP_200_OK)
 async def flip_card(authorization: str = Header(None), card_id: int = Path(..., ge = 0, lt = TOTAL_CARD), db: AsyncIOMotorClient = Depends(get_database)):
   decoded_token = await decode_access_token(authorization)
   found_game = await get_current_game(db, decoded_token.username)

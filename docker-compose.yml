@@ -10,7 +10,7 @@ services:
       - cardgame-network
   cardgame:
     restart: always
-    image: cardgame:0.0.1
+    image: vasanchai032/cardgame-api:1.0.0
     container_name: cardgame
     environment:
       - MONGODB_URL=mongodb://cardgame-mongo:27017 
