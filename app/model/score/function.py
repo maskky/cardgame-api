@@ -3,8 +3,8 @@ from app.util.index import get_current_datetime
 from app.util.error import ErrorHandler
 from .model import Score
 
-DATABASE = 'score'
-COLLECTION = 'document'
+DATABASE = "score"
+COLLECTION = "document"
 
 async def create_or_update_best_score(conn: AsyncIOMotorClient, username: str, score: int):
   found_score = await conn[DATABASE][COLLECTION].find_one({ "username": username })

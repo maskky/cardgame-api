@@ -9,7 +9,7 @@ from app.util.config import SECRET_KEY, ACCESS_TOKEN_EXPIRE_MINUTES
 from app.util.error import ErrorHandler
 
 ALGORITHM = "HS256"
-TOKEN_TYPE = 'Bearer'
+TOKEN_TYPE = "Bearer"
 TOKEN_TYPE_INDEX = 0
 TOKEN_INDEX = 1
 
@@ -32,14 +32,14 @@ async def decode_access_token(authorization: str):
     token = authorization.split()[TOKEN_INDEX]
 
     if token_type != TOKEN_TYPE:
-      raise ErrorHandler(name = 'INVALID_TOKEN')
+      raise ErrorHandler(name = "INVALID_TOKEN")
 
     payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
     username: str = payload.get("sub")
 
     if username is None:
-      raise ErrorHandler(name = 'INVALID_TOKEN')
+      raise ErrorHandler(name = "INVALID_TOKEN")
 
     return TokenData(username = username)
   except:
-    raise ErrorHandler(name = 'INVALID_TOKEN')
+    raise ErrorHandler(name = "INVALID_TOKEN")

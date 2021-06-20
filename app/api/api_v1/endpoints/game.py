@@ -33,7 +33,7 @@ async def continue_game(authorization: str = Header(None), db: AsyncIOMotorClien
   game = await get_current_game(db, decoded_token.username)
   
   if game is None:
-    raise ErrorHandler(name = 'GAME_NOT_FOUND')
+    raise ErrorHandler(name = "GAME_NOT_FOUND")
 
   user_best_score = await get_user_best_score(db, decoded_token.username)
   global_best_score = await get_global_best_score(db)
@@ -50,7 +50,7 @@ async def flip_card(authorization: str = Header(None), card_id: int = Path(..., 
   found_game = await get_current_game(db, decoded_token.username)
   
   if found_game is None or found_game["cleared"]:
-    raise ErrorHandler(name = 'GAME_NOT_FOUND')
+    raise ErrorHandler(name = "GAME_NOT_FOUND")
   
   previous_flip = found_game.get("previous_flip")
 

@@ -11,9 +11,9 @@ class PydanticObjectId(BsonObjectId):
   @classmethod
   def validate(cls, v):
     if not isinstance(v, BsonObjectId):
-      raise TypeError('ObjectId required')
+      raise TypeError("ObjectId required")
     return str(v)
 
   @classmethod
   def __modify_schema__(cls, field_schema):
-    field_schema.update(type='string')
+    field_schema.update(type = "string")

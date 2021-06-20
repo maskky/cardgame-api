@@ -1,8 +1,8 @@
 from app.adapter.mongo.db import AsyncIOMotorClient
 from app.util.index import get_current_datetime
 
-DATABASE = 'user'
-COLLECTION = 'document'
+DATABASE = "user"
+COLLECTION = "document"
 
 async def check_duplicate_username(conn: AsyncIOMotorClient, username: str):
   user = await conn[DATABASE][COLLECTION].find_one({

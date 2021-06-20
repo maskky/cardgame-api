@@ -9,7 +9,7 @@ class Score(BaseModel):
   score: int
 
 class ScoreInResponse(BaseModel):
-  id: PydanticObjectId = Field(..., alias='_id')
+  id: PydanticObjectId = Field(..., alias = "_id")
   username: str
   created_at: datetime
   updated_at: datetime

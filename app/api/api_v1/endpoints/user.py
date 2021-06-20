@@ -15,7 +15,7 @@ router = APIRouter()
 @router.post("/register", response_model = UserInResponse, tags = ["User"], status_code = HTTP_201_CREATED)
 async def register(user: UserInRequest, db: AsyncIOMotorClient = Depends(get_database)):
   if await check_duplicate_username(db, user.username):
-    raise ErrorHandler(name = 'DUPLICATED')
+    raise ErrorHandler(name = "DUPLICATED")
 
   user.password = hash_password(user.password)
   created_user = await create_user(db, user.username, user.password)
@@ -27,10 +27,10 @@ async def login(user: UserInRequest, db: AsyncIOMotorClient = Depends(get_databa
   found_user = await get_user_by_username(db, user.username)
 
   if not found_user:
-    raise ErrorHandler(name = 'BAD_CREDENTIAL')
+    raise ErrorHandler(name = "BAD_CREDENTIAL")
 
   if not verify_password(user.password, found_user["password"]):
-    raise ErrorHandler(name = 'BAD_CREDENTIAL')
+    raise ErrorHandler(name = "BAD_CREDENTIAL")
   
   access_token = create_access_token(data = { "sub": user.username })
 

@@ -19,7 +19,7 @@
 ## Project Structure
 [Back](#table-of-content)<br>
 ```
-./cardgame-service/
+./cardgame-api/
 │
 ├── app/
 │   ├── adapter/ # Store all adapter that connect external
@@ -111,7 +111,7 @@ environment:
 [Back](#table-of-content)<br>
 #### Regular
 ```sh
-uvicorn index:app --reload # required mongo mmust be started in local at port 27017
+uvicorn index:app --reload # required mongo must be started in local at port 27017
 ```
 #### Run with docker-compose
 ```sh

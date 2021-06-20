@@ -3,8 +3,8 @@ from app.util.index import get_current_datetime
 from app.util.error import ErrorHandler
 from .model import Game
 
-DATABASE = 'game'
-COLLECTION = 'document'
+DATABASE = "game"
+COLLECTION = "document"
 
 async def create_or_update_game(conn: AsyncIOMotorClient, username: str):
   found_game = await conn[DATABASE][COLLECTION].find_one({ "username": username })
