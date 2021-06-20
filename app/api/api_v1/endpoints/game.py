@@ -8,7 +8,7 @@ from app.model.game.model import GameInResponse, Game
 from app.model.game.function import create_or_update_game, get_current_game, update_game
 from app.model.token.function import decode_access_token
 from app.model.score.function import create_or_update_best_score, get_user_best_score, get_global_best_score
-from app.api.api_v1.response import response_model, response_success
+from app.api.api_v1.response import response_model
 from app.util.config import TOTAL_CARD
 from app.util.error import ErrorHandler
 

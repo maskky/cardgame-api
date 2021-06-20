@@ -59,6 +59,7 @@ class Game(BaseModel):
     if previous is None:
       if board[card]["flipped"]:
         raise ErrorHandler(name = "ALREADY_FLIPPED")
+        
       board[card]["flipped"] = True
       game["previous_flip"] = card
     else:
@@ -70,7 +71,6 @@ class Game(BaseModel):
       if board[previous]["value"] == board[card]["value"]:
         board[previous]["flipped"] = board[card]["flipped"] = True
         game["card_lefts"] -= 2
-
       else:
         board[previous]["flipped"] = board[card]["flipped"] = False
 

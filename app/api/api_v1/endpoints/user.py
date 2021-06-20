@@ -7,7 +7,7 @@ from app.model.token.function import create_access_token, decode_access_token
 from app.model.user.model import UserInRequest, UserInResponse
 from app.model.token.model import Token
 from app.util.index import hash_password, verify_password
-from app.api.api_v1.response import response_model, response_success
+from app.api.api_v1.response import response_model
 from app.util.error import ErrorHandler
 
 router = APIRouter()
