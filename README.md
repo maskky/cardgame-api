@@ -210,6 +210,9 @@ and you will get your current game and continue play.
 #### Flip card
 **required Authorization**<br>
 Flip card with **POST** `/api/v1/flip_card/{card}` **{card}** is index of **board** list.
+<br>
+**NOTE:** **global_best** will update anytime If other user cleared the game with the movement that less than current global best score. 
+<br>
 Examples: 
 
 - Try to flip **0** index by **POST** `/api/v1/flip_card/0`
