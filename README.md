@@ -17,7 +17,7 @@
   - [Flip card](#flip-card)
 
 ## Project Structure
-
+[Back](#table-of-content)
 ```
 ./cardgame-service/
 │
@@ -67,9 +67,10 @@
 ```
 
 ## Prerequisite
-Python version: `3.8.5`
-Mongo version: `3.6`
-Poetry version: `1.1.6` (Package Manager)
+[Back](#table-of-content)
+- Python version: `3.8.5`
+- Mongo version: `3.6`
+- Poetry version: `1.1.6` (Package Manager)
 
 Install denpendencies (If use Docker)
 ```sh
@@ -80,6 +81,7 @@ poetry will return name and path of virtual env, then **activate** that virtual 
 
 ### Config
 #### Dotenv
+[Back](#table-of-content)
 By default, .env will contains
 ```
 # Mongo database url
@@ -96,6 +98,7 @@ ACCESS_TOKEN_EXPIRE_MINUTES=30
 ```
 
 #### Docker-compose
+[Back](#table-of-content)
 ```
 environment:
   - MONGODB_URL=mongodb://cardgame-mongo:27017 
@@ -107,10 +110,12 @@ environment:
 
 ### Run
 #### Regular
+[Back](#table-of-content)
 ```sh
-uvicorn index:app --reload
+uvicorn index:app --reload # required mongo mmust be started in local at port 27017
 ```
 #### Run with docker-compose
+[Back](#table-of-content)
 ```sh
 docker-compose up -d
 ```
@@ -119,6 +124,7 @@ and API docuemnts will appear at: `http://localhost:8000/redoc`
 
 ### How to play
 #### Register
+[Back](#table-of-content)
 Register with **POST** `/api/v1/register`
 ```
 # Request body
@@ -128,6 +134,7 @@ Register with **POST** `/api/v1/register`
 }
 ```
 #### Login
+[Back](#table-of-content)
 Login with **POST** `/api/v1/login`
 ```
 # Request body
@@ -145,8 +152,9 @@ If success, you will get **access_token**
 }
 ```
 #### New game
+[Back](#table-of-content)
 **required Authorization**<br>
-New game with **POST** `/api/v1/new_game`
+New game with **POST** `/api/v1/new_game`<br>
 **You need to add **Authorization** in headers
 examples:
 ```
@@ -200,10 +208,12 @@ and you will get
 }
 ```
 #### Current Game
+[Back](#table-of-content)
 **required Authorization**<br>
 Get current game with **GET** `/api/v1/continue`
 and you will get your current game and continue play.
 #### Flip card
+[Back](#table-of-content)
 **required Authorization**<br>
 Flip card with **POST** `/api/v1/flip_card/{card}` **{card}** is index of **board** list.
 Examples: 
