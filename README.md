@@ -72,7 +72,7 @@
 - Mongo version: `3.6`
 - Poetry version: `1.1.6` (Package Manager)
 
-Install denpendencies (If use Docker)
+Install denpendencies (If not use **Docker**)
 ```sh
 pip install poetry && poetry install
 ```
