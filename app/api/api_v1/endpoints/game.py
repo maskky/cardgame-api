@@ -7,7 +7,7 @@ from app.adapter.mongo.db import AsyncIOMotorClient, get_database
 from app.model.game.model import GameInResponse, Game
 from app.model.game.function import create_or_update_game, get_current_game, update_game
 from app.model.token.function import decode_access_token
-from app.model.score.function import create_or_update_score, get_user_best_score, get_global_best_score
+from app.model.score.function import create_or_update_best_score, get_user_best_score, get_global_best_score
 from app.api.api_v1.response import response_model, response_success
 from app.util.config import TOTAL_CARD
 from app.util.error import ErrorHandler
@@ -56,7 +56,8 @@ async def flip_card(authorization: str = Header(None), card_id: int = Path(..., 
 
   game = Game.flip_card(found_game, int(card_id))
   if game["cleared"]:
-    await create_or_update_score(db, decoded_token.username, game["movement"])
+    await create_or_update_best_score(db, decoded_token.username, game["movement"])
+  
   await update_game(db, found_game["_id"], game)
 
   game = Game.show_compared_card(found_game, int(card_id), previous_flip)

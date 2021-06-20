@@ -6,16 +6,17 @@ from .model import Score
 DATABASE = 'score'
 COLLECTION = 'document'
 
-async def create_or_update_score(conn: AsyncIOMotorClient, username: str, score: int):
+async def create_or_update_best_score(conn: AsyncIOMotorClient, username: str, score: int):
   found_score = await conn[DATABASE][COLLECTION].find_one({ "username": username })
-  score = Score(username = username, score = score).dict()
+  new_score = Score(username = username, score = score).dict()
 
   if found_score is None:
-    await conn[DATABASE][COLLECTION].insert_one(score)
+    await conn[DATABASE][COLLECTION].insert_one(new_score)
   else:
-    await conn[DATABASE][COLLECTION].replace_one({ "_id": found_score["_id"] }, score)
+    if score < found_score["score"]:
+      await conn[DATABASE][COLLECTION].replace_one({ "_id": found_score["_id"] }, new_score)
   
-  return score
+  return new_score
 
 async def get_user_best_score(conn: AsyncIOMotorClient, username: str):
   found_score = await conn[DATABASE][COLLECTION].find_one({ "username": username })
